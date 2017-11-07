@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+ol, ul {
+    list-style: none;
+}
+
+.sr-col-7, .sr-col-10 {
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+}
+.sr-col-7 {
+    display: block;
+    width: 29.16666667%;
+}
+.sr-col-10 {
+    display: block;
+    width: 41.66666667%;
+}
+.sr-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 1753px;
+    height: 100%;
+    background: linear-gradient(60deg,#3abeff,#2f70ff);
+}
+.sr-container > div {
+    float: left;
+    /*position: relative;*/
+    height: 576px;
+}
+/*奖杯*/
+.sr-container .cup {
+    width: 343px;
+    /*background: #6fc8ff;*/
+    margin-right: 16px;
+}
+.sr-container .cup .cup-box {
+    background: #6fc8ff;
+    height: 100%;
+}
+.sr-container .cup .cup-box .cup-item {
+    display: inline-block;
+    background-size: 100%;
+    width: 92px;
+    height: 165px;
+    position: relative;
+}
+.sr-container .cup .cup-box .cup-gold {
+    width: 110px;
+    height: 184px;
+    background: url("../images/gold_modal.png") no-repeat;
+}
+.sr-container .cup .cup-box .cup-silver {
+    background: url("../images/silver_modal.png") no-repeat;
+}
+.sr-container .cup .cup-box .cup-copper {
+    background: url("../images/copper_modal.png") no-repeat;
+}
+.sr-container .cup .cup-box .top {
+    text-align: center;
+    padding-top: 48px;
+    padding-bottom: 36px;
+}
+.sr-container .cup .cup-box .first {
+    position: absolute;
+    bottom: 28px;
+    left: 33px;
+}
+.sr-container .cup .cup-box .second {
+    position: absolute;
+    bottom: 26px;
+    left: 25px;
+}
+.sr-container .cup .cup-box .cup-item .text span{
+    display: block;
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+}
+.sr-container .cup .cup-box .bottom {
+    height: 266px;
+    text-align: center;
+}
+
+.sr-container .cup .cup-box .bottom .left {
+    margin-right: 36px;
+}
+.sr-container .cup .cup-box .bottom .right {
+    margin-left: 36px;
+}
+/*.sr-container .cup .cup-box .bottom > div {*/
+    /*float: left;*/
+/*}*/
+/*排名*/
+.sr-container .rank {
+    width: 454px;
+}
+.sr-container .rank .list .list-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #6cb3ff;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+}
+.sr-container .rank .list .list-item:not(:last-child) {
+    margin-bottom: 4px;
+}
+.sr-container .rank .list .list-item i {
+    width: 62px;
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+.sr-container .rank .list .list-item i[role='gold'] {
+    background: url("../images/gold.png") no-repeat;
+}
+.sr-container .rank .list .list-item i[role='silver'] {
+    background: url("../images/silver.png") no-repeat;
+}
+.sr-container .rank .list .list-item i[role='copper'] {
+    background: url("../images/copper.png") no-repeat;
+}
+
+/*标题*/
+.sr-container .sr-title {
+    background: linear-gradient(90deg,#ff6299,#ffa16e);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
