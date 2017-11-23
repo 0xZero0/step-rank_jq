@@ -16,7 +16,11 @@ $(document).ready(function () {
       const query = d.split('=')
       body[query[0]] = query[1]
     })
-    return body
+    const queryStr = Object.keys(body);
+    if (queryStr.indexOf('date') > -1 && queryStr.indexOf('schoolGuid') > -1) {
+      return body
+    }
+    return false
   }
   function initRankData(list) {
     var data = []
@@ -31,21 +35,85 @@ $(document).ready(function () {
     }
     return data;
   }
+  function _fetch(url , params) {
+    var myHeaders = new Headers();
+    myHeaders.append('Accept', 'application/json');
+    // myHeaders.append('Access-Control-Allow-Origin', '*');
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+    var myInit = { method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(params),
+      mode: 'cors',
+      cache: 'default'
+    };
+    var myRequest = new Request(HOST + url, myInit);
+    return new Promise(function (resolve, reject) {
+      fetch(myRequest)
+          .then(function (res) {
+           return res.json()
+          })
+          .then(function (json) {
+            resolve(json)
+          })
+          .catch(function (err) {
+            reject(err)
+          })
+    })
+  }
 
-  function initRank(url, page) {
-    // var query = initQueryBody() || DEFAULT_QUERY
-    var query =  DEFAULT_QUERY
+  function initRank(url, type, page) {
+    var query = initQueryBody() || DEFAULT_QUERY
+    // var query =  DEFAULT_QUERY
     PARAM.date = query.date
     PARAM.schoolGuid = query.schoolGuid
     const param = page ? Object.assign({pageSize: page},PARAM) :  PARAM
-    $.post(HOST + url, param, function(res){
-      if (res.Code == 0) {
-        console.log(initRankData(res.List), 'uuuu')
+    _fetch(url, param).then(function (res) {
+      if(res.Code === 0) {
+        const data =  initRankData(res.List)
+        renderList(data, type)
       }
-    },'json');
+    })
   }
-  initRank('/steps/day', 3)
-  initRank('/steps/day')
-  initRank('/steps/week')
-  initRank('/steps/month')
+  function getRankTop(rank) {
+    if (rank < 4) {
+      switch (rank) {
+        case 1:
+          return '<div class="sr-col-7"><i role="gold"></i></div> '
+          break;
+        case 2:
+          return '<i role="silver"></i>'
+          break;
+        case 3:
+          return '<i role="copper"></i>'
+          break;
+      }
+    } else {
+      return '<div class="sr-col-7 rank-box"><span>'+ rank +'</span></div>'
+    }
+  }
+  function renderList(data, type) {
+    if (Array.isArray(data) &&  data.length) {
+      if (type === 'top') {
+        $('.text').each(function (i) {
+          $(this).append('<span>'+ data[i].name +'</span><span>'+ data[i].step +'步</span>')
+        })
+      } else  {
+        var $ul = $('#'+type)
+        data.forEach(function (d) {
+          var rank =  getRankTop(d.rank)
+          var html = '<li class="list-item">' +
+              '<div class="sr-col-7">'+ d.name +'</div>' +
+              '<div class="sr-col-10">'+ d.step +'步</div> '+
+               rank +
+              '</li>';
+          $ul.append(html)
+        })
+      }
+    }
+
+  }
+  initRank('/steps/day', 'top', 3)
+  initRank('/steps/day', 'day')
+  initRank('/steps/week', 'week')
+  initRank('/steps/month', 'month')
 })

@@ -113,6 +113,14 @@ ol, ul {
     font-weight: 300;
     text-align: center;
 }
+.sr-container .rank .list .list-item .rank-box {
+    text-align: right;
+}
+.sr-container .rank .list .list-item .rank-box span {
+    margin-right: 15px;
+    font-weight: 400;
+    font-size: 20px;
+}
 .sr-container .rank .list .list-item:not(:last-child) {
     margin-bottom: 4px;
 }
