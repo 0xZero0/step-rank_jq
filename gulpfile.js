@@ -1,20 +1,19 @@
-var gulp = require('gulp')
-var uglifyjs = require('uglify-js'); // can be a git checkout
-                                     // or another module (such as `uglify-es` for ES6 support)
-var composer = require('gulp-uglify/composer');
-var pump = require('pump');
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
 
-var minify = composer(uglifyjs, console);
+var src_js = './js',
+    dest_js = './dest/js';
 
-gulp.task('compress', function (cb) {
-  // the same options as described above
-  var options = {};
-
-  pump([
-        gulp.src('js/*.js'),
-        minify(options),
-        gulp.dest('dist')
-      ],
-      cb
-  );
+gulp.task('minjs', function () {
+  gulp.src(src_js+'/*.js')
+      .pipe(uglify())//压缩
+      .pipe(concat("all.min.js"))//合并
+      .pipe(gulp.dest(dest_js));
 });
+
+// gulp.task('watch', function () {
+//   gulp.watch(src_js+'/**/*.js',['minjs']);//监听src/css/下的全部.js文件，若有改动则执行名为'minjs'任务
+// });
+
+gulp.task('default',['minjs','watch']);
