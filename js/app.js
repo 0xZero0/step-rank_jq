@@ -64,9 +64,10 @@ $(document).ready(function () {
   function initRank(url, type, page) {
     var query = initQueryBody() || DEFAULT_QUERY
     // var query =  DEFAULT_QUERY
-    PARAM.date = query.date
-    PARAM.schoolGuid = query.schoolGuid
-    const param = page ? Object.assign({pageSize: page},PARAM) :  PARAM
+    var param = PARAM
+    param.date = query.date
+    param.schoolGuid = query.schoolGuid
+    if (page) { param.pageSize }
     _fetch(url, param).then(function (res) {
       if(res.Code === 0) {
         const data =  initRankData(res.List)
