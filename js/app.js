@@ -1,6 +1,7 @@
 $(document).ready(function () {
    // const HOST = 'http://localhost:3000';
-  const HOST = 'http://47.95.204.85:3000';
+   const HOST = 'http://schoolinkapi.ezooo.cn:81/API/Steps/';
+  // const HOST = 'http://47.95.204.85:3000';
   const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
   const DEFAULT_QUERY = {date: '2016-12-27', schoolGuid: 'F7127394-40A3-4934-9D8E-BDA27BA0AC78'}
 
@@ -48,6 +49,7 @@ $(document).ready(function () {
       data: param,
       success: function(res) {
         console.log(res, 'data')
+        if ( typeof res === 'string') { res = JSON.parse(res) }
         if(res.Code === 0) {
           const data =  initRankData(res.List)
           renderList(data, type)
@@ -96,8 +98,8 @@ $(document).ready(function () {
     }
 
   }
-  initRank('/steps/day', 'top', 3)
-  initRank('/steps/day', 'day')
-  initRank('/steps/week', 'week')
-  initRank('/steps/month', 'month')
+  initRank('/GetStepRanksByDay.ashx', 'top', 3)
+  initRank('/GetStepRanksByDay.ashx', 'day')
+  initRank('/GetStepRanksByWeek.ashx', 'week')
+  initRank('/GetStepRanksByMonth.ashx', 'month')
 })
