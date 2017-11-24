@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  const HOST = 'http://47.95.204.85:3000';
+   const HOST = 'http://localhost:3000';
+  //const HOST = 'http://47.95.204.85:3000';
+  // const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
   const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
   const DEFAULT_QUERY = {date: '2016-12-27', schoolGuid: 'F7127394-40A3-4934-9D8E-BDA27BA0AC78'}
 
@@ -50,6 +52,7 @@ $(document).ready(function () {
     return new Promise(function (resolve, reject) {
       fetch(myRequest)
           .then(function (res) {
+            console.log('res', res)
            return res.json()
           })
           .then(function (json) {
@@ -67,12 +70,28 @@ $(document).ready(function () {
     PARAM.date = query.date
     PARAM.schoolGuid = query.schoolGuid
     const param = page ? Object.assign({pageSize: page},PARAM) :  PARAM
-    _fetch(url, param).then(function (res) {
-      if(res.Code === 0) {
-        const data =  initRankData(res.List)
-        renderList(data, type)
+    $.ajax({
+      url: HOST + url,
+      type: 'POST',
+      data: param,
+      success: function(res) {
+        console.log(res, 'data')
+        if(res.Code === 0) {
+          const data =  initRankData(res.List)
+          renderList(data, type)
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('error ' + textStatus + " " + errorThrown);
       }
-    })
+    });
+    // _fetch(url, param).then(function (res) {
+    //   console.log()
+    //   if(res.Code === 0) {
+    //     const data =  initRankData(res.List)
+    //     renderList(data, type)
+    //   }
+    // })
   }
   function getRankTop(rank) {
     if (rank < 4) {
