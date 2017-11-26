@@ -72,7 +72,7 @@ $(document).ready(function () {
           break;
       }
     } else {
-      return '<div class="sr-col-7 rank-box"><span>'+ rank +'</span></div>'
+       return '<div class="sr-col-7 rank-box"><span>'+ rank +'</span></div>'
     }
   }
   function renderList(data, type) {
