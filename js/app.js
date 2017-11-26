@@ -1,6 +1,6 @@
 $(document).ready(function () {
    // const HOST = 'http://localhost:3000';
-   const HOST = 'http://schoolinkapi.ezooo.cn:81/API/Steps/';
+   const HOST = 'https://banxuntong.net/API/Steps';
   // const HOST = 'http://47.95.204.85:3000';
   const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
   const DEFAULT_QUERY = {schoolGuid: '6A4C4027-9497-45E5-8B90-FE1165CAA39B',
@@ -49,9 +49,9 @@ $(document).ready(function () {
       var m = date.getMonth() + 1
       var d = date.getDate() - 1
       var dateStr = y + '-' + m + '-' + d;
-      param.pageSize = 3
       param.date = dateStr
     }
+    param.pageSize = page
     param.schoolGuid = query.schoolGuid
     param.classGuid = query.classGuid
     if (page) { param.pageSize = page }
