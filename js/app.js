@@ -41,8 +41,17 @@ $(document).ready(function () {
   function initRank(url, type, page) {
     // var query = initQueryBody() || DEFAULT_QUERY
     var query = DEFAULT_QUERY
-    var param = PARAM
+    var param = JSON.parse(JSON.stringify(PARAM))
     // param.date = query.date
+    if (page === 3) {
+      var date = new Date();
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      var d = date.getDate() - 1
+      var dateStr = y + '-' + m + '-' + d;
+      param.pageSize = 3
+      param.date = dateStr
+    }
     param.schoolGuid = query.schoolGuid
     param.classGuid = query.classGuid
     if (page) { param.pageSize = page }
