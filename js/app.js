@@ -99,7 +99,7 @@ $(document).ready(function () {
 
   }
   initRank('/GetStepRanksByDay.ashx', 'top', 3)
-  initRank('/GetStepRanksByDay.ashx', 'day')
-  initRank('/GetStepRanksByWeek.ashx', 'week')
-  initRank('/GetStepRanksByMonth.ashx', 'month')
+  initRank('/GetStepRanksByDay.ashx', 'day', 10)
+  initRank('/GetStepRanksByWeek.ashx', 'week', 10)
+  initRank('/GetStepRanksByMonth.ashx', 'month', 10)
 })
