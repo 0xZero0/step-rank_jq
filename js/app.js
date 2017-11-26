@@ -3,12 +3,13 @@ $(document).ready(function () {
    const HOST = 'http://schoolinkapi.ezooo.cn:81/API/Steps/';
   // const HOST = 'http://47.95.204.85:3000';
   const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
-  const DEFAULT_QUERY = {date: '2016-12-27', schoolGuid: 'F7127394-40A3-4934-9D8E-BDA27BA0AC78'}
+  const DEFAULT_QUERY = {schoolGuid: '6A4C4027-9497-45E5-8B90-FE1165CAA39B',
+                         classGuid: '9DE90193-CB22-425B-9F17-B879500BB8C6'}
 
   const PAGE_SIZE = 10
   const PARAM = {
     token: TOKEN,
-    personType: 1,
+    personType: 2,
     pageSize: PAGE_SIZE
   }
   function initQueryBody() {
@@ -38,10 +39,12 @@ $(document).ready(function () {
     return data;
   }
   function initRank(url, type, page) {
-    var query = initQueryBody() || DEFAULT_QUERY
+    // var query = initQueryBody() || DEFAULT_QUERY
+    var query = DEFAULT_QUERY
     var param = PARAM
-    param.date = query.date
+    // param.date = query.date
     param.schoolGuid = query.schoolGuid
+    param.classGuid = query.classGuid
     if (page) { param.pageSize = page }
     $.ajax({
       url: HOST + url,
