@@ -39,7 +39,7 @@ $(document).ready(function () {
   function initRank(url, type, page) {
     var query = initQueryBody()
     var param = PARAM
-    if ('date' in param) {
+    if ('date' in query) {
       param.date = query.date
     }
     param.schoolGuid = query.schoolGuid
