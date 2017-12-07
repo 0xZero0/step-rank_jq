@@ -14,10 +14,10 @@ $(document).ready(function () {
     var body = DEFAULT_QUERY
     searchs.forEach(function (d,i) {
       var query = d.split('=')
-      if (query[i] === 'date') {
+      if (query[0] === 'date') {
         body.date = query[1]
       }
-      if (query[i] === 'schoolGuid') {
+      if (query[0] === 'schoolGuid') {
         body.schoolGuid = query[1]
       }
     })
