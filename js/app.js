@@ -1,26 +1,27 @@
 $(document).ready(function () {
-  const HOST = 'https://banxuntong.net/API/Steps/';
-  const TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
-  const DEFAULT_QUERY = {date: '2016-12-27', schoolGuid: 'F7127394-40A3-4934-9D8E-BDA27BA0AC78'}
+  var HOST = 'https://banxuntong.net/API/Steps/';
+  var TOKEN = '8C107BD0CADD409AB5CE76B89714A475'
+  var DEFAULT_QUERY = {schoolGuid: 'F7127394-40A3-4934-9D8E-BDA27BA0AC78'}
 
-  const PAGE_SIZE = 10
-  const PARAM = {
+  var PAGE_SIZE = 10
+  var PARAM = {
     token: TOKEN,
     personType: 1,
     pageSize: PAGE_SIZE
   }
   function initQueryBody() {
-    const searchs = window.location.search.replace('?', '').split('&')
-    var body = {}
+    var searchs = window.location.search.replace('?', '').split('&')
+    var body = DEFAULT_QUERY
     searchs.forEach(function (d) {
-      const query = d.split('=')
-      body[query[0]] = query[1]
+      var query = d.split('=')
+      if (query[0] === 'date') {
+        body.date = query[1]
+      }
+      if (query[0] === 'schoolGuid') {
+        body.schoolGuid = query[1]
+      }
     })
-    const queryStr = Object.keys(body);
-    if (queryStr.indexOf('date') > -1 && queryStr.indexOf('schoolGuid') > -1) {
-      return body
-    }
-    return false
+    return body
   }
   function initRankData(list) {
     var data = []
@@ -36,9 +37,11 @@ $(document).ready(function () {
     return data;
   }
   function initRank(url, type, page) {
-    var query = initQueryBody() || DEFAULT_QUERY
+    var query = initQueryBody()
     var param = PARAM
-    param.date = query.date
+    if ('date' in param) {
+      param.date = query.date
+    }
     param.schoolGuid = query.schoolGuid
     if (page) { param.pageSize = page }
     $.ajax({
