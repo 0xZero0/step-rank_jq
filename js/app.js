@@ -12,12 +12,12 @@ $(document).ready(function () {
   function initQueryBody() {
     var searchs = window.location.search.replace('?', '').split('&')
     var body = DEFAULT_QUERY
-    searchs.forEach(function (d) {
+    searchs.forEach(function (d,i) {
       var query = d.split('=')
-      if (query[0] === 'date') {
+      if (query[i] === 'date') {
         body.date = query[1]
       }
-      if (query[0] === 'schoolGuid') {
+      if (query[i] === 'schoolGuid') {
         body.schoolGuid = query[1]
       }
     })
