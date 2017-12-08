@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,62 @@
   <title>走步排名</title>
   <link rel="stylesheet" type="text/css" href="./styles/styles.css">
 </head>
+
 <body>
   <div class="sr-container">
+    <div class="box-right">
+      <div class="sr-col-4">
+        <div class="rank">
+          <div class="sr-title">
+            <span>教师日排名</span>
+          </div>
+          <div class="list">
+            <ul id="day">
+              <li class="list-item">
+                <div class="sr-col-7">姓名</div>
+                <div class="sr-col-10">步数</div>
+                <div class="sr-col-7">排名</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="sr-col-4">
+        <div class="rank">
+          <div class="sr-title">
+            <span>教师周排名</span>
+          </div>
+          <div class="list">
+            <ul id="week">
+              <li class="list-item">
+                <div class="sr-col-7">姓名</div>
+                <div class="sr-col-10">步数</div>
+                <div class="sr-col-7">排名</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="sr-col-4">
+        <div class="rank">
+          <div class="sr-title">
+            <span>教师月排名</span>
+          </div>
+          <div class="list">
+            <ul id="month">
+              <li class="list-item">
+                <div class="sr-col-7">姓名</div>
+                <div class="sr-col-10">步数</div>
+                <div class="sr-col-7">排名</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <div class="cup">
       <div class="sr-title">
         <span>昨日排名</span>
@@ -22,63 +77,22 @@
         <div class="bottom">
           <span class="left">
             <div class="cup-item cup-silver">
-               <div class="second text"></div>
+              <div class="second text"></div>
             </div>
           </span>
           <span class="right">
             <div class="cup-item cup-copper">
-               <div class="second text"></div>
+              <div class="second text"></div>
             </div>
           </span>
         </div>
       </div>
     </div>
-    <div class="rank">
-      <div class="sr-title">
-        <span>教师日排名</span>
-      </div>
-      <div class="list">
-        <ul id="day">
-          <li class="list-item">
-            <div class="sr-col-7">姓名</div>
-            <div class="sr-col-10">步数</div>
-            <div class="sr-col-7">排名</div>
-          </li>
 
-        </ul>
-      </div>
-    </div>
-    <div class="rank" style="margin: 0 16px">
-      <div class="sr-title">
-        <span>教师周排名</span>
-      </div>
-      <div class="list">
-        <ul id="week">
-          <li class="list-item">
-            <div class="sr-col-7">姓名</div>
-            <div class="sr-col-10">步数</div>
-            <div class="sr-col-7">排名</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="rank">
-      <div class="sr-title">
-        <span>教师月排名</span>
-      </div>
-      <div class="list">
-        <ul id="month">
-          <li class="list-item">
-            <div class="sr-col-7">姓名</div>
-            <div class="sr-col-10">步数</div>
-            <div class="sr-col-7">排名</div>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
   <!--<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>-->
   <script type="text/javascript" src="./js/jquery.min.js"></script>
   <script type="text/javascript" src="./js/app.js"></script>
 </body>
+
 </html>

@@ -22,24 +22,30 @@ ol, ul {
     display: block;
     width: 41.66666667%;
 }
+.sr-col-4 {
+    display: block;
+    width: 33.333333%;
+    float: left;
+    height: 100%;
+}
 .sr-container {
     position: absolute;
     left: 0;
     right: 0;
-    width: 1753px;
+    width: 100%;
     height: 100%;
     background: linear-gradient(60deg,#3abeff,#2f70ff);
 }
 .sr-container > div {
     float: left;
-    /*position: relative;*/
-    height: 576px;
+    position: relative;
+    height: 589spx;
 }
 /*奖杯*/
 .sr-container .cup {
     width: 343px;
-    /*background: #6fc8ff;*/
-    margin-right: 16px;
+    /* background: #6fc8ff; */
+    margin-left: -100%;
 }
 .sr-container .cup .cup-box {
     background: #6fc8ff;
@@ -96,12 +102,15 @@ ol, ul {
 .sr-container .cup .cup-box .bottom .right {
     margin-left: 36px;
 }
-/*.sr-container .cup .cup-box .bottom > div {*/
-    /*float: left;*/
-/*}*/
 /*排名*/
-.sr-container .rank {
-    width: 454px;
+.sr-container  .box-right {
+    width: 100%;
+    padding-left: 347px;
+}
+.sr-container .box-right .rank {
+    padding: 0 4px;
+    /* background: #ffa16e; */
+    height: 100%;
 }
 .sr-container .rank .list .list-item {
     position: relative;
@@ -149,5 +158,5 @@ ol, ul {
     color: #fff;
     font-size: 30px;
     letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
